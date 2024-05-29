@@ -1,0 +1,202 @@
+.grid{
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: var(--pad);
+}
+
+.btnDisc{
+  padding: 8px;
+  border-radius: 50%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark);
+  font-size: 20px;
+}
+
+.conta{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px var(--pad);
+  width: 100%;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 0;
+  min-height: 40px;
+}
+
+.conta:hover{
+  background: var(--back-color);
+}
+
+.btnDisc:hover{
+  background: var(--back-color);
+}
+
+.nav{
+  min-height: 52px;
+  display: flex;
+  gap: var(--pad);
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px var(--pad);
+  width: 100%;
+  font-weight: 800;
+}
+
+.navApp{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--pad);
+  align-items: center;
+  padding: 0px var(--pad);
+  padding: var(--pad);
+  background: var(--dark);
+  color: black;
+}
+
+.notif{
+  position: absolute;
+  bottom: 28px;
+  right: 28px;
+  padding: var(--pad);
+  background: var(--white);
+  box-shadow: 10px 10px 20px rgba(104, 100, 116, 0.04);
+  color: var(--dark);
+}
+
+.pago-true{ 
+  color: #0000005f;
+  text-decoration: line-through;
+}
+
+.conta:hover .inv{
+  display: block;
+}
+
+.inv{
+  display: none;
+  font-size: 6px;
+}
+
+.inv button{
+  font-size: 16px;
+}
+
+.inputFlut{
+  position: absolute;
+  display: none;
+  animation: slide 50ms ease-in-out;
+}
+
+.clientesDiv{
+  background: var(--white);
+  color: var(--dark); 
+  box-shadow: 10px 10px 20px rgba(104, 100, 116, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  animation: popup 300ms ease-in-out;
+}
+
+input{
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1.5px solid #1e21341f;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: 10px 10px 20px rgba(104, 100, 116, 0.04);
+}
+
+input:active{
+  scale: 0.95;  
+}
+
+input:hover{
+  border: 1.5px solid #1321424b;
+}
+
+.navHeader{
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  align-items: center;
+}
+
+.valor{
+  font-weight: 700;
+}
+
+.navHeader .tittle{
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.clientesDiv:hover{
+  box-shadow: 10px 10px 20px rgba(104, 100, 116, 0.1);
+}
+
+.clientesContas .nav{
+  min-height: 12px;
+  font-size: 12px;
+  color: #00000050;
+  display: flex;
+  gap: calc(var(--pad)/2);
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px var(--pad);
+  width: 100%;
+  font-weight: 800;
+}
+
+.clientesContas{
+  height: 100%;
+}
+
+.recentContas{
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+@keyframes slide {
+  from {
+    bottom: -120px;
+  }
+  to {
+    bottom: 28px;
+  }
+}
+
+.saldo{
+  display: flex;
+  flex-direction: column;
+}
+
+.saldo .txt{
+  font-size: 12px;
+  color: #0000005f;
+}
+
+.negativo {
+  color: rgb(255, 102, 102);
+}
+
+.positivo {
+  color: rgb(78, 223, 78);
+}

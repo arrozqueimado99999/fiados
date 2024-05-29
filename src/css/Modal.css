@@ -1,0 +1,121 @@
+/* Modal.css */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.635);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    animation: fadein 50ms ease-in;
+  }
+  
+  .modal {
+    background: var(--white);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: fit-content;
+    border-radius: var(--pad);
+    position: absolute;
+    margin: auto;
+    z-index: 1001;
+    animation: popup 100ms ease-in-out;
+  }
+
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    width: 100%;
+  }
+
+  .modalContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: calc(var(--pad)/2);
+    width: 100%;
+    height: fit-content;
+    z-index: 1001;
+  }
+
+  .modalContent input{
+    width: 100%;
+  }
+  
+  .modal-close {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--dark);
+  }
+
+  @keyframes fadein {
+    from{
+      opacity: 0;
+    }
+    to{
+      opacity: 1;
+    }
+  }
+
+  @keyframes popup {
+    from{
+      scale: .8;
+    }
+    to{
+      scale: 1;
+    }
+  }
+  
+
+  /* To hide the checkbox */
+#checkboxInput {
+  display: none;
+}
+
+.toggleSwitch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 50px;
+  height: 24px;
+  background-color: rgb(166, 166, 166);
+  border-radius: 20px;
+  cursor: pointer;
+  transition-duration: .05s;
+}
+
+.toggleSwitch::after {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition-duration: .1s;
+  box-shadow: 5px 2px 7px rgba(203, 10, 10, 0.26);
+}
+
+#checkboxInput:checked+.toggleSwitch::after {
+  transform: translateX(150%);
+  transition-duration: .05s;
+  background-color: rgb(165, 255, 165);
+}
+/* Switch background change */
+#checkboxInput:checked+.toggleSwitch {
+  background-color: rgb(79, 224, 108);
+  transition-duration: .05s;
+}
