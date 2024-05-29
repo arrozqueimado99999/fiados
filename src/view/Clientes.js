@@ -1,12 +1,14 @@
 import React, { useRef, useState, useEffect } from 'react';
 import '../css/App.css';
 import '../firebaseConfig.js';
-import { TbArrowNarrowRight, TbUserPlus, TbTrash } from "react-icons/tb";
+import { TbArrowNarrowRight, TbUserPlus, TbTrash, TbDots } from "react-icons/tb";
 import Modal from '../Modal.js';
 import useModal from '../useModals.js';
-import { createCliente, deleteCliente, listClientes } from '../model/clientes.js';
+import { createCliente, deleteCliente, listClientes, getClienteById } from '../model/clientes.js';
 import { marcarComoPago, createConta, deleteConta, listContas } from '../model/contas.js';
 import CreateContaForm from '../forms/CreateContaForm.js';
+import ClienteModal from '../components/clienteModal';
+import { Dropdown } from 'rsuite';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,6 +23,7 @@ export function Clientes() {
   const [isOpen, openModal, closeModal, position] = useModal();
   const [modalContent, setModalContent] = useState(null);
   const buttonRef2 = useRef(null);
+  const buttonRef3 = useRef(null);
   const inputRef = useRef(null);
 
   const [saldos, setSaldos] = useState({});
@@ -52,8 +55,7 @@ export function Clientes() {
     try { 
       await createConta(desc, valor, pago, clienteId, data);
       listContas(clienteId, setContas);
-      toast.success('Conta criada com sucesso!',
-      {position: 'bottom-right'});
+      toast.success('Conta criada com sucesso!', {position: 'bottom-right'});
     } catch (error) {
       console.error("Erro ao criar a conta: ", error);
       toast.error('Erro ao criar a conta.');
@@ -63,6 +65,20 @@ export function Clientes() {
   const handleOpenModal = (content) => {
     openModal();
     setModalContent(content);
+  };
+
+  const handleOpenClienteModal = async (clienteId) => {
+    try {
+      const cliente = await getClienteById(clienteId);
+      handleOpenModal(
+        <ClienteModal 
+          cliente={cliente}
+        />
+      );
+    } catch (error) {
+      console.error("Erro ao buscar cliente: ", error);
+      toast.error('Erro ao buscar cliente.');
+    }
   };
 
   const handleKeyPress = (event) => {
@@ -76,7 +92,6 @@ export function Clientes() {
   };
 
   return (
-    <div className="App">
       <div className='container'>
         <div className='nav'>
           <h2>Clientes</h2>
@@ -127,7 +142,7 @@ export function Clientes() {
                 <div className='recentContas'>
                   {contas[cliente.id] && contas[cliente.id].map((conta, i) => (
                     <div className={`conta ${conta.pago ? 'pago-true' : 'pago-false'}`} key={i}>
-                        <p className='desc'>{conta.descricao}</p>
+                      <p className='desc'>{conta.descricao}</p>
                       <div className='flex-end'>
                         <div className='inv'>
                           <button className='btnDisc' onClick={() => deleteConta(conta.id, setStoredValues, setContas)}>
@@ -146,7 +161,10 @@ export function Clientes() {
                   <p className='txt'>Saldo:</p>
                   <p>{formatCurrency(saldos[cliente.id] || 0)}</p>
                 </div>
-                <button className='btnDisc'>
+                <button className='btnDisc'
+                  ref={buttonRef3}
+                  onClick={() => handleOpenClienteModal(cliente.id)}
+                >
                   <TbArrowNarrowRight/>
                 </button>
               </div>
@@ -154,7 +172,6 @@ export function Clientes() {
           ))}
         </div>
       </div>
-    </div>
   );
 }
 

@@ -21,7 +21,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 400px;
+    min-width: 460px;
+    width: fit-content;
     height: fit-content;
     border-radius: var(--pad);
     position: absolute;
@@ -118,4 +119,14 @@
 #checkboxInput:checked+.toggleSwitch {
   background-color: rgb(79, 224, 108);
   transition-duration: .05s;
+}
+
+.clienteModal{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  height: 85vh;
+  width: 1024px;
+  background: red;
 }

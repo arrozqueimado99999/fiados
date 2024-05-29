@@ -3,16 +3,14 @@ import { listClientes } from "./clientes";
 
 const db = getFirestore();
 
-export const createConta = async (descricao, valor, pago, clienteId, data) => {
-  // Convertendo a data do input para um timestamp do Firestore
-  const dataCriacao = Timestamp.fromDate(new Date(data));
+export const createConta = async (descricao, valor, pago, clienteId) => {
 
   await addDoc(collection(db, "contas"), {
     descricao,
     valor: parseFloat(valor),
     pago,
     clienteId,
-    dataCriacao: dataCriacao
+    dataCriacao: serverTimestamp()
   });
 };
 

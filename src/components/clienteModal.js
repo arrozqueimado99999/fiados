@@ -1,43 +1,36 @@
-// CreateContaForm.js
-import React, { useState } from 'react';
+import React from 'react';
+import { Tab, TabList, Tabs, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
-const clienteModal = ({ clienteId }) => {
-  const handleSubmit = () => {
-    handleCreateConta(clienteId, inputDesc, inputValor, inputPago);
-    setInputDesc('');
-    setInputValor('');
-    setInputPago(false);
-  };
-
+const ClienteModal = ({ cliente }) => {
   return (
-    <div className='modalContent'>
-        <nav className='nav'>
-            <p>cliente.nome</p>
-        </nav>
-      <input
-        placeholder='Descrição'
-        type="text"
-        value={inputDesc}
-        onChange={(e) => setInputDesc(e.target.value)}
-      />
-      <input
-        placeholder='Valor'
-        type="number"
-        value={inputValor}
-        onChange={(e) => setInputValor(e.target.value)}
-      />
+    <div className='clienteModal'>
+      <div className='nav'>
+        <div className='column'>
+          <h2>{cliente.nome}</h2>
+          <p>Criado em {new Date(cliente.dataCriacao.seconds * 1000).toLocaleDateString()}</p>
+        </div>
+      </div>
 
-        <input type="checkbox" id="checkboxInput"
-        checked={inputPago}
-        onChange={(e) => setInputPago(e.target.checked)}
-        />
-        <label for="checkboxInput" class="toggleSwitch">
-        </label>
-      <button className='outline' onClick={handleSubmit}>
-        Criar conta
-      </button>
+      <div className='container'>
+        <Tabs>
+          <TabList>
+            <Tab>Contas</Tab>
+            <Tab>Histórico</Tab>
+          </TabList>
+
+          <TabPanel>
+            <h2>Any content 1</h2>
+          </TabPanel>
+          
+          <TabPanel>
+            <h2>Any content 2</h2>
+          </TabPanel>
+        </Tabs>
+      </div>
+
     </div>
   );
 };
 
-export default clienteModal;
+export default ClienteModal;

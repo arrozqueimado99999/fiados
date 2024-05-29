@@ -1,5 +1,4 @@
-// clientes.js
-import { getFirestore, addDoc, collection, deleteDoc, doc, onSnapshot, serverTimestamp } from "firebase/firestore";
+import { getFirestore, addDoc, collection, deleteDoc, doc, onSnapshot, serverTimestamp, getDoc } from "firebase/firestore";
 import { listContas } from './contas';
 
 const db = getFirestore();
@@ -25,4 +24,14 @@ export const listClientes = (setStoredValues, setContas) => {
     setStoredValues(temporaryArr);
     temporaryArr.forEach(cliente => listContas(cliente.id, setContas));
   });
+};
+
+export const getClienteById = async (id) => {
+  const clienteDoc = doc(db, "clientes", id);
+  const clienteSnapshot = await getDoc(clienteDoc);
+  if (clienteSnapshot.exists()) {
+    return { id: clienteSnapshot.id, ...clienteSnapshot.data() };
+  } else {
+    throw new Error(`Cliente with ID ${id} does not exist`);
+  }
 };
