@@ -1,7 +1,7 @@
 import '../css/App.css';
 import { ToastContainer } from 'react-toastify';
 import {SideBarData} from './SideBarData';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export function Sidebar() {
   return (

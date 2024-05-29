@@ -1,26 +1,24 @@
 import React, { useRef, useState, useEffect } from 'react';
 import '../css/App.css';
 import '../firebaseConfig.js';
-import { TbArrowNarrowRight, TbUserPlus, TbTrash, TbDots } from "react-icons/tb";
+import { TbArrowNarrowRight, TbUserPlus, TbTrash } from "react-icons/tb";
 import Modal from '../Modal.js';
 import useModal from '../useModals.js';
 import { createCliente, deleteCliente, listClientes, getClienteById } from '../model/clientes.js';
-import { marcarComoPago, createConta, deleteConta, listContas } from '../model/contas.js';
+import { createConta, deleteConta, listContas } from '../model/contas.js';
 import CreateContaForm from '../forms/CreateContaForm.js';
 import ClienteModal from '../components/clienteModal';
-import { Dropdown } from 'rsuite';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { serverTimestamp } from 'firebase/firestore';
 
 export function Clientes() {
   const [inputNome, setInputNome] = useState('');
-  const [inputData, setInputData] = useState(serverTimestamp);
+  //const [inputData, setInputData] = useState(serverTimestamp);
   const [storedValues, setStoredValues] = useState([]);
   const [contas, setContas] = useState({});
   const [showInput, setShowInput] = useState(false);
-  const [isOpen, openModal, closeModal, position] = useModal();
+  const [isOpen, openModal, closeModal] = useModal();
   const [modalContent, setModalContent] = useState(null);
   const buttonRef2 = useRef(null);
   const buttonRef3 = useRef(null);

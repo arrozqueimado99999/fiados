@@ -2,7 +2,6 @@
 import React from 'react';
 import './css/Modal.css';
 import './App';
-import { TbX } from "react-icons/tb";
 
 const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
