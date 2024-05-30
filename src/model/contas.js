@@ -47,3 +47,13 @@ export const marcarComoPago = async (contaId, clienteId, setContas) => {
     console.error("Erro ao alternar o status de pagamento da conta: ", error);
   }
 };
+
+export const buscarContasPorCliente = async (clienteId) => {
+  const q = query(collection(db, "contas"), where("clienteId", "==", clienteId));
+  const querySnapshot = await getDocs(q);
+  const contasArray = [];
+  querySnapshot.forEach((doc) => {
+    contasArray.push({ id: doc.id, ...doc.data() });
+  });
+  return { [clienteId]: contasArray };
+};

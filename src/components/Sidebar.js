@@ -8,7 +8,7 @@ export function Sidebar() {
     <nav className='navApp'>
       {SideBarData.map((val, key) => {
         return(
-          <Link className='btn-navg' to={val.path}>
+          <Link className='btn' to={val.path}>
             <div className='icon'>
               {val.icon}
             </div>

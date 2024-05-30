@@ -6,8 +6,8 @@ import Modal from '../Modal.js';
 import useModal from '../useModals.js';
 import { createCliente, deleteCliente, listClientes, getClienteById } from '../model/clientes.js';
 import { createConta, deleteConta, listContas, marcarComoPago } from '../model/contas.js';
-import CreateContaForm from '../components/CreateContaForm.js';
-import ClienteModal from '../components/clienteModal';
+import contaModal from '../components/modals/contaModal';
+import ClienteModal from '../components/modals/clienteModal';
 import { formatCurrency } from '../utils';
 
 import { toast } from 'react-toastify';
@@ -123,7 +123,7 @@ export function Clientes() {
 
                   <button className='btn-sq-sml btn-solid-blue'
                     ref={buttonRef2}
-                    onClick={() => handleOpenModal(<CreateContaForm clienteId={cliente.id} handleCreateConta={handleCreateConta} />)}
+                    onClick={() => handleOpenModal(<contaModal clienteId={cliente.id} handleCreateConta={handleCreateConta} />)}
                   >
                     <HiPlusCircle />
                   </button>

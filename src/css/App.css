@@ -89,38 +89,21 @@
   border-right: 2px solid var(--back-color);
 }
 
-.btn-navg{
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 8px var(--pad);
-  color: var(--dark);
-  background: var(--white);
-  gap: 4px;
-  font-size: 16px;
-  text-decoration: none;
-  border-radius: var(--pad);
-  border: 2px solid transparent;
-}
-
-
-.btn-navg:focus{
+.btn:focus{
   background: var(--blue);
   border: 2px solid var(--blue);
   color: var(--white);
 }
 
-.btn-navg:active{
+.btn:active{
   scale: 0.9;
 }
 
-.btn-navg:hover{
+.btn:hover{
   border: 2px solid var(--dest);
 }
 
-.btn-navg .icon{
+.btn .icon{
   font-size: 20px;
   display: flex;
   align-items: center;

@@ -2,7 +2,7 @@
 import { serverTimestamp } from 'firebase/firestore';
 import React, { useState } from 'react';
 
-const CreateContaForm = ({ clienteId, handleCreateConta }) => {
+const ContaModal = ({ clienteId, handleCreateConta }) => {
   const [inputDesc, setInputDesc] = useState('');
   const [inputValor, setInputValor] = useState('');
   const [inputData, setInputData] = useState(serverTimestamp);
@@ -47,4 +47,4 @@ const CreateContaForm = ({ clienteId, handleCreateConta }) => {
   );
 };
 
-export default CreateContaForm;
+export default ContaModal;

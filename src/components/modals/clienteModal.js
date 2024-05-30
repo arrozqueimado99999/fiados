@@ -1,8 +1,8 @@
 import React from 'react';
 import { Tab, TabList, Tabs, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import ResumoPage from './resumoPage';
-import PedidoPage from './pedidosPage';
+import ResumoPage from '../resumoPage';
+import PedidoPage from '../pedidosPage';
 
 const ClienteModal = ({ cliente }) => {
   return (
@@ -22,15 +22,14 @@ const ClienteModal = ({ cliente }) => {
           </TabList>
 
           <TabPanel>
-            <ResumoPage/>
+            <ResumoPage cliente={cliente} />
           </TabPanel>
           
           <TabPanel>
-            <PedidoPage/>
+            <PedidoPage />
           </TabPanel>
         </Tabs>
       </div>
-
     </div>
   );
 };
