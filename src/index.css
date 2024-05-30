@@ -7,9 +7,74 @@
   font-style: normal;  
 }
 
+/*********************/
+.btn-solid-blue{
+  background: var(--blue);
+  color: var(--white);
+}
+
+.btn-solid-red{
+  background: var(--red);
+  color: var(--white);
+}
+
+.btn-solid-green{
+  background: var(--green);
+  color: var(--white);
+}
+
+.btn-solid-dark{
+  background: var(--dark);
+  color: var(--white);
+}
+
+.btn-sq-sml{
+  font-size: 24px;
+  border-radius: var(--pad);
+  aspect-ratio: 1/1;
+  padding: calc(var(--pad)/2);
+}
+
+.btn-sq-mid{
+  font-size: 32px;
+  border-radius: var(--pad);
+  aspect-ratio: 1/1;
+  padding: calc(var(--pad)/2);
+}
+
+.btn-sq-big{
+  font-size: 48px;
+  border-radius: var(--pad);
+  aspect-ratio: 1/1;
+  padding: calc(var(--pad)/2);
+}
+
+.btn-circ-sml{
+  font-size: 24px;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  padding: calc(var(--pad)/2);
+} 
+
+.btn-circ-mid{
+  font-size: 32px;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  padding: calc(var(--pad)/2);
+} 
+
+.btn-circ-mid{
+  font-size: 48px;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  padding: calc(var(--pad)/2);
+}
+
+/*********************/
+
 .App{
   display: grid;
-  grid-template-columns: 1fr 9fr;
+  grid-template-columns: 1fr 11fr;
   height: 100vh;
 }
 
@@ -23,16 +88,15 @@ body {
   background: rgb(226, 235, 240);
 }
 :root{
-  --primary-color: #4e74d6;
+  --blue: #1634F5;
+  --red: #F51629;
+  --yellow: #F5C116;
+  --green: #16F54A;
   --white: #ffffff;
-  --second-color: #262a55;
+  --dest: #27293e3e;
   --back-color: #a5a7c72b;
-  --dark: #181b30;
+  --dark: #1b1d42;
   --pad: 12px;
-}
-
-.icon-mid{
-  font-size: 18px;
 }
 
 .btn-sm{

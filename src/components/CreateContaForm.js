@@ -23,6 +23,7 @@ const CreateContaForm = ({ clienteId, handleCreateConta }) => {
         value={inputDesc}
         onChange={(e) => setInputDesc(e.target.value)}
       />
+
       <input
         placeholder='Valor'
         type="number"

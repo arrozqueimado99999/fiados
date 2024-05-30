@@ -1,6 +1,8 @@
 import React from 'react';
 import { Tab, TabList, Tabs, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import ResumoPage from './resumoPage';
+import PedidoPage from './pedidosPage';
 
 const ClienteModal = ({ cliente }) => {
   return (
@@ -15,16 +17,16 @@ const ClienteModal = ({ cliente }) => {
       <div className='container'>
         <Tabs>
           <TabList>
-            <Tab>Contas</Tab>
-            <Tab>Histórico</Tab>
+            <Tab>Visão Geral</Tab>
+            <Tab>Pedidos</Tab>
           </TabList>
 
           <TabPanel>
-            <h2>Any content 1</h2>
+            <ResumoPage/>
           </TabPanel>
           
           <TabPanel>
-            <h2>Any content 2</h2>
+            <PedidoPage/>
           </TabPanel>
         </Tabs>
       </div>

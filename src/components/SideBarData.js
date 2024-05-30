@@ -1,15 +1,15 @@
 import React from "react";
-import {TbHome, TbUsersGroup} from 'react-icons/tb';
+import {HiHome , HiUsers } from 'react-icons/hi';
 
 export const SideBarData = [
     {
         tittle: 'Início',
-        icon: <TbHome/>,
+        icon: <HiHome />,
         path: '/'
     },
     {
         tittle: 'Clientes',
-        icon: <TbUsersGroup/>,
+        icon: <HiUsers />,
         path: '/clientes'
     }
 ];

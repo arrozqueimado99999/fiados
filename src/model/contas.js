@@ -1,4 +1,4 @@
-import { getFirestore, addDoc, updateDoc, collection, deleteDoc, doc, query, where, getDocs, serverTimestamp } from "firebase/firestore";
+import { getFirestore, addDoc, updateDoc, collection, deleteDoc, doc, query, where, getDocs, serverTimestamp, getDoc } from "firebase/firestore";
 import { listClientes } from "./clientes";
 
 const db = getFirestore();
@@ -33,11 +33,17 @@ export const listContas = async (clienteId, setContas) => {
 export const marcarComoPago = async (contaId, clienteId, setContas) => {
   const contaRef = doc(db, "contas", contaId);
   try {
-    await updateDoc(contaRef, {
-      pago: true
-    });
-    listContas(clienteId, setContas);
+    const contaSnap = await getDoc(contaRef);
+    if (contaSnap.exists()) {
+      const currentPago = contaSnap.data().pago;
+      await updateDoc(contaRef, {
+        pago: !currentPago
+      });
+      listContas(clienteId, setContas);
+    } else {
+      console.error("Documento não encontrado!");
+    }
   } catch (error) {
-    console.error("Erro ao marcar a conta como paga: ", error);
+    console.error("Erro ao alternar o status de pagamento da conta: ", error);
   }
 };

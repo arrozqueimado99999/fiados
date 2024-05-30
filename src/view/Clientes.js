@@ -1,13 +1,14 @@
 import React, { useRef, useState, useEffect } from 'react';
 import '../css/App.css';
 import '../firebaseConfig.js';
-import { TbArrowNarrowRight, TbUserPlus, TbTrash } from "react-icons/tb";
+import { HiPlusCircle , HiArrowRight , HiOutlineUserAdd , HiOutlineTrash, HiCurrencyDollar } from "react-icons/hi";
 import Modal from '../Modal.js';
 import useModal from '../useModals.js';
 import { createCliente, deleteCliente, listClientes, getClienteById } from '../model/clientes.js';
-import { createConta, deleteConta, listContas } from '../model/contas.js';
-import CreateContaForm from '../forms/CreateContaForm.js';
+import { createConta, deleteConta, listContas, marcarComoPago } from '../model/contas.js';
+import CreateContaForm from '../components/CreateContaForm.js';
 import ClienteModal from '../components/clienteModal';
+import { formatCurrency } from '../utils';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -85,17 +86,13 @@ export function Clientes() {
     }
   };
 
-  const formatCurrency = (value) => {
-    return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-  };
-
   return (
       <div className='container'>
         <div className='nav'>
           <h2>Clientes</h2>
           <button className='outline' onClick={() => setShowInput(true)}>
             <p>Criar cliente</p>
-            <TbUserPlus />
+            <HiOutlineUserAdd />
           </button>
           <input className='inputFlut' type="text" value={inputNome} onChange={(e) => setInputNome(e.target.value)} />
           {showInput && (
@@ -121,13 +118,14 @@ export function Clientes() {
                 <p className='tittle'>{cliente.nome}</p>
                 <div className='flex-gap'>
                   <button className='btnDisc' onClick={() => deleteCliente(cliente.id)}>
-                    <TbTrash />
+                    <HiOutlineTrash  />
                   </button>
-                  <button
+
+                  <button className='btn-sq-sml btn-solid-blue'
                     ref={buttonRef2}
                     onClick={() => handleOpenModal(<CreateContaForm clienteId={cliente.id} handleCreateConta={handleCreateConta} />)}
                   >
-                    Criar Conta
+                    <HiPlusCircle />
                   </button>
                 </div>
               </div>
@@ -143,8 +141,12 @@ export function Clientes() {
                       <p className='desc'>{conta.descricao}</p>
                       <div className='flex-end'>
                         <div className='inv'>
+                          <button className='btnDisc' onClick={() => marcarComoPago(conta.id, cliente.id, setContas)}>
+                            <HiCurrencyDollar />
+                          </button>
+
                           <button className='btnDisc' onClick={() => deleteConta(conta.id, setStoredValues, setContas)}>
-                            <TbTrash />
+                            <HiOutlineTrash />
                           </button>
                         </div>
                         <p className='valor'>{formatCurrency(conta.valor)}</p>
@@ -163,7 +165,7 @@ export function Clientes() {
                   ref={buttonRef3}
                   onClick={() => handleOpenClienteModal(cliente.id)}
                 >
-                  <TbArrowNarrowRight/>
+                  <HiArrowRight />
                 </button>
               </div>
             </div>
