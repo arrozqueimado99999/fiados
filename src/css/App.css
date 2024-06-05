@@ -85,7 +85,7 @@
   padding: 0px var(--pad);
   padding: var(--pad);
   color: black;
-  background: var(--white);
+  background: var(--dark);
   border-right: 2px solid var(--back-color);
 }
 
